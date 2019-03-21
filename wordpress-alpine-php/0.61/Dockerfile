@@ -10,8 +10,7 @@ MAINTAINER Azure App Service Container Images <appsvc-images@microsoft.com>
 ENV SSH_PASSWD "root:Docker!"
 RUN apk add --update openssh \
 && rm -rf /tmp/* /var/cache/apk/* \
-&& rc-update add sshd \
-&& /etc/init.d/sshd start
+&& rc-update add sshd 
 #RUN apk update \
 #        && apk add --no-cache dialog \
 #        && apk update \
