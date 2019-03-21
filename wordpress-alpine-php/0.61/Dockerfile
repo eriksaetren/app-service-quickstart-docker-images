@@ -8,11 +8,13 @@ MAINTAINER Azure App Service Container Images <appsvc-images@microsoft.com>
 # ========
 # ssh
 ENV SSH_PASSWD "root:Docker!"
-RUN apk update \
-        && apk add --no-cache dialog \
-        && apk update \
-  && apk add --no-cache openssh-server \
-  && echo "$SSH_PASSWD" | chpasswd
+RUN apk add --update openssh \
+&& rm -rf /tmp/* /var/cache/apk/*
+#RUN apk update \
+#        && apk add --no-cache dialog \
+#        && apk update \
+#  && apk add --no-cache openssh-server \
+#  && echo "$SSH_PASSWD" | chpasswd
 #nginx
 ENV NGINX_VERSION 1.14.0
 ENV NGINX_LOG_DIR "/home/LogFiles/nginx"
