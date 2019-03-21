@@ -11,7 +11,7 @@ ENV SSH_PASSWD "root:Docker!"
 RUN apk add --update openssh \
 && rm -rf /tmp/* /var/cache/apk/* \
 && rc-update add sshd \
-&& /etc/ini.d/sshd start
+&& /etc/init.d/sshd start
 #RUN apk update \
 #        && apk add --no-cache dialog \
 #        && apk update \
