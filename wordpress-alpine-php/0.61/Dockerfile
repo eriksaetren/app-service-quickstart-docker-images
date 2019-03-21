@@ -8,10 +8,10 @@ MAINTAINER Azure App Service Container Images <appsvc-images@microsoft.com>
 # ========
 # ssh
 ENV SSH_PASSWD "root:Docker!"
-RUN apt-get update \
-        && apt-get install -y --no-install-recommends dialog \
-        && apt-get update \
-  && apt-get install -y --no-install-recommends openssh-server \
+RUN apk update \
+        && apk add --no-cache dialog \
+        && apk update \
+  && apk add --no-cache openssh-server \
   && echo "$SSH_PASSWD" | chpasswd
 #nginx
 ENV NGINX_VERSION 1.14.0
