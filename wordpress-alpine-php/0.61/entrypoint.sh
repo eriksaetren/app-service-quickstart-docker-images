@@ -176,6 +176,7 @@ echo "Starting Redis ..."
 redis-server &
 
 echo "Starting SSH ..."
+service ssh start
 rc-service sshd start
 
 echo "Starting php-fpm ..."
