@@ -164,8 +164,8 @@ if [ ! -e "$WORDPRESS_HOME/wp-config.php" ]; then
         #sed -i "s/getenv('DATABASE_USERNAME')/'${DATABASE_USERNAME}'/g" wp-config.php
         #sed -i "s/getenv('DATABASE_PASSWORD')/'${DATABASE_PASSWORD}'/g" wp-config.php
         #sed -i "s/getenv('DATABASE_HOST')/'${DATABASE_HOST}'/g" wp-config.php
-		#cd $WORDPRESS_HOME
-		#cp $WORDPRESS_SOURCE/wp-config.php .
+		cd $WORDPRESS_HOME
+		cp $WORDPRESS_SOURCE/wp-config.php .
 	fi
 else
 	echo "INFO: $WORDPRESS_HOME/wp-config.php already exists."
