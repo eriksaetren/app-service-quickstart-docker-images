@@ -103,6 +103,17 @@ if [ ! $WEBSITES_ENABLE_APP_SERVICE_STORAGE ]; then
 fi 
 chmod 777 /run/php/php7.0-fpm.sock
 
+# Set PHP.ini settings:
+phpmemory_limit=256M
+php_maxpostsize=256M
+php_uploadmaxsize=128M
+php_inputtime=900
+
+sed -i 's/post_max_size=.*/post_max_size='${php_maxpostsize}'/' $PHP_CONF_FILE 
+sed -i 's/upload_max_filesize=.*/upload_max_filesize='${php_uploadmaxsize}'/' $PHP_CONF_FILE    
+sed -i 's/max_input_time=.*/max_input_time='${php_inputtime}'/' $PHP_CONF_FILE 
+echo "memory_limit = $phpmemory_limit" >> $PHP_CONF_FILE
+
 DATABASE_TYPE=$(echo ${DATABASE_TYPE}|tr '[A-Z]' '[a-z]')
 
 if [ "${DATABASE_TYPE}" == "local" ]; then  
@@ -166,6 +177,7 @@ if [ ! -e "$WORDPRESS_HOME/wp-config.php" ]; then
         #sed -i "s/getenv('DATABASE_HOST')/'${DATABASE_HOST}'/g" wp-config.php
 		cd $WORDPRESS_HOME
 		cp $WORDPRESS_SOURCE/wp-config.php .
+		cp $WORDPRESS_SOURCE/wp_install.sh .
 	fi
 else
 	echo "INFO: $WORDPRESS_HOME/wp-config.php already exists."
