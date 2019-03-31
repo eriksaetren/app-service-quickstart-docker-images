@@ -112,7 +112,7 @@ php_inputtime=900
 sed -i 's/post_max_size=.*/post_max_size='${php_maxpostsize}'/' $PHP_CONF_FILE 
 sed -i 's/upload_max_filesize=.*/upload_max_filesize='${php_uploadmaxsize}'/' $PHP_CONF_FILE    
 sed -i 's/max_input_time=.*/max_input_time='${php_inputtime}'/' $PHP_CONF_FILE 
-echo "memory_limit = $phpmemory_limit" >> $PHP_CONF_FILE
+printf "memory_limit = $phpmemory_limit\n" >> $PHP_CONF_FILE
 
 DATABASE_TYPE=$(echo ${DATABASE_TYPE}|tr '[A-Z]' '[a-z]')
 
