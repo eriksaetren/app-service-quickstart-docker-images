@@ -104,8 +104,8 @@ fi
 chmod 777 /run/php/php7.0-fpm.sock
 
 # Set PHP.ini settings:
-phpmemory_limit=512M
-php_maxpostsize=512M
+phpmemory_limit=256M
+php_maxpostsize=256M
 php_uploadmaxsize=256M
 php_inputtime=1800
 
