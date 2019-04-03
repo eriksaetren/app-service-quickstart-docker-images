@@ -1,8 +1,8 @@
 #
 # Dockerfile for WordPress
 #
-FROM housetrevethan/images-for-linux-container:v1.1
-MAINTAINER House Trevethan housetrevethan.com 
+FROM appsvcorg/nginx-fpm:0.4 
+MAINTAINER Azure App Service Container Images <appsvc-images@microsoft.com> 
 # ========
 # ENV vars
 # ========
