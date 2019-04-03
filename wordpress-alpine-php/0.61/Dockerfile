@@ -1,7 +1,7 @@
 #
 # Dockerfile for WordPress
 #
-FROM housetrevethan/images-for-linux-container:v1.0  
+FROM housetrevethan/images-for-linux-container:v1.1
 MAINTAINER House Trevethan housetrevethan.com 
 # ========
 # ENV vars
