@@ -120,6 +120,9 @@ sed -i 's/pm.max_children =.*/pm.max_children ='${pm_max_children}'/' "/usr/loca
 
 
 # Server Level Redirect (from appname.azurewebsites.net to domain name)
+printf "\n\n\n\n" >> /etc/nginx/conf.d/default.conf
+
+
 
 DATABASE_TYPE=$(echo ${DATABASE_TYPE}|tr '[A-Z]' '[a-z]')
 
