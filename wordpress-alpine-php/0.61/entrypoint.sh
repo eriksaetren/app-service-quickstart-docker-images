@@ -115,7 +115,7 @@ sed -i 's/max_input_time=.*/max_input_time='${php_inputtime}'/' $PHP_CONF_FILE
 printf "\nmemory_limit = $phpmemory_limit" >> $PHP_CONF_FILE
 
 #www.conf settings:
-pm_max_children=60
+pm_max_children=70
 pm_start_servers=10
 pm_min_spare_servers=10
 pm_max_spare_servers=40
