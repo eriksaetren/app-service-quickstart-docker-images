@@ -115,12 +115,14 @@ sed -i 's/max_input_time=.*/max_input_time='${php_inputtime}'/' $PHP_CONF_FILE
 printf "\nmemory_limit = $phpmemory_limit" >> $PHP_CONF_FILE
 
 #www.conf settings:
-pm_max_children=50
+pm_max_children=60
 pm_start_servers=10
 pm_min_spare_servers=10
+pm_max_spare_servers=40
 sed -i 's/pm.max_children =.*/pm.max_children ='${pm_max_children}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.start_servers =.*/pm.start_servers ='${pm_start_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
-sed -i 's/min_spare_servers =.*/min_spare_servers ='${pm_min_spare_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
+sed -i 's/pm.min_spare_servers =.*/pm.min_spare_servers ='${pm_min_spare_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
+sed -i 's/pm.max_spare_servers =.*/pm.max_spare_servers ='${pm_max_spare_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 
 
 # Server Level Redirect (from appname.azurewebsites.net to domain name)
