@@ -128,7 +128,8 @@ sed -i 's/pm.max_spare_servers =.*/pm.max_spare_servers ='${pm_max_spare_servers
 # Server Level Redirect (from appname.azurewebsites.net to domain name)
 printf "\nserver{\n\tserver_name $WEBSITE_SITE_NAME.azurewebsites.net;\n\treturn 301 \$scheme://$DOMAIN_NAME;\n}" >> /etc/nginx/conf.d/default.conf
 
-
+# Fix $_SERVER['REMOTE_ADDR'] showing WRONG ip address:
+sed -i 's/fastcgi_param\s.*REMOTE_ADDR\s*$remote_addr/fastcgi_param REMOTE_ADDR $http_x_client_ip/' '/etc/nginx/fastcgi.conf'
 
 DATABASE_TYPE=$(echo ${DATABASE_TYPE}|tr '[A-Z]' '[a-z]')
 
