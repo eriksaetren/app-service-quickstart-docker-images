@@ -119,11 +119,12 @@ pm_max_children=70
 pm_start_servers=10
 pm_min_spare_servers=10
 pm_max_spare_servers=40
+pm_max_requests=500
 sed -i 's/pm.max_children =.*/pm.max_children ='${pm_max_children}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.start_servers =.*/pm.start_servers ='${pm_start_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.min_spare_servers =.*/pm.min_spare_servers ='${pm_min_spare_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.max_spare_servers =.*/pm.max_spare_servers ='${pm_max_spare_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
-
+sed -i 's/pm.max_requests =.*/pm.max_requests ='${pm_max_requests}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 
 # Server Level Redirect (from appname.azurewebsites.net to domain name)
 printf "\nserver{\n\tserver_name $WEBSITE_SITE_NAME.azurewebsites.net;\n\treturn 301 \$scheme://$DOMAIN_NAME;\n}" >> /etc/nginx/conf.d/default.conf
