@@ -104,8 +104,8 @@ fi
 chmod 777 /run/php/php7.0-fpm.sock
 
 # Set PHP.ini settings:
-phpmemory_limit=256M
-php_maxpostsize=256M
+phpmemory_limit=64M
+php_maxpostsize=128M
 php_uploadmaxsize=256M
 php_inputtime=1800
 
@@ -115,11 +115,11 @@ sed -i 's/max_input_time=.*/max_input_time='${php_inputtime}'/' $PHP_CONF_FILE
 printf "\nmemory_limit = $phpmemory_limit" >> $PHP_CONF_FILE
 
 #www.conf settings:
-pm_max_children=25
-pm_start_servers=1
-pm_min_spare_servers=1
-pm_max_spare_servers=2
-pm_max_requests=500
+pm_max_children=15
+pm_start_servers=2
+pm_min_spare_servers=2
+pm_max_spare_servers=4
+pm_max_requests=400
 sed -i 's/pm.max_children =.*/pm.max_children ='${pm_max_children}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.start_servers =.*/pm.start_servers ='${pm_start_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.min_spare_servers =.*/pm.min_spare_servers ='${pm_min_spare_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
