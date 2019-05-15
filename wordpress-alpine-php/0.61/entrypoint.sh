@@ -115,10 +115,10 @@ sed -i 's/max_input_time=.*/max_input_time='${php_inputtime}'/' $PHP_CONF_FILE
 printf "\nmemory_limit = $phpmemory_limit" >> $PHP_CONF_FILE
 
 #www.conf settings:
-pm_max_children=70
-pm_start_servers=10
-pm_min_spare_servers=10
-pm_max_spare_servers=40
+pm_max_children=25
+pm_start_servers=1
+pm_min_spare_servers=1
+pm_max_spare_servers=2
 pm_max_requests=500
 sed -i 's/pm.max_children =.*/pm.max_children ='${pm_max_children}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.start_servers =.*/pm.start_servers ='${pm_start_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
