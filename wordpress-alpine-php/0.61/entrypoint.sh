@@ -126,6 +126,11 @@ sed -i 's/pm.min_spare_servers =.*/pm.min_spare_servers ='${pm_min_spare_servers
 sed -i 's/pm.max_spare_servers =.*/pm.max_spare_servers ='${pm_max_spare_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.max_requests =.*/pm.max_requests ='${pm_max_requests}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 
+# Modify php-fpm.conf:
+sed -i 's/;emergency_restart_threshold = .*/emergency_restart_threshold = 10/' "/usr/local/etc/php-fpm.conf" 
+sed -i 's/;emergency_restart_interval = .*/emergency_restart_interval = 1m/' "/usr/local/etc/php-fpm.conf" 
+sed -i 's/;process_control_timeout = .*/process_control_timeout = 10s/' "/usr/local/etc/php-fpm.conf" 
+
 # Server Level Redirect (from appname.azurewebsites.net to domain name)
 printf "\nserver{\n\tserver_name $WEBSITE_SITE_NAME.azurewebsites.net;\n\treturn 301 \$scheme://$DOMAIN_NAME;\n}" >> /etc/nginx/conf.d/default.conf
 
