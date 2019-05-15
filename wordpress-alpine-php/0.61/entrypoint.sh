@@ -115,16 +115,18 @@ sed -i 's/max_input_time=.*/max_input_time='${php_inputtime}'/' $PHP_CONF_FILE
 printf "\nmemory_limit = $phpmemory_limit" >> $PHP_CONF_FILE
 
 #www.conf settings:
-pm_max_children=15
+pm_max_children=14
 pm_start_servers=2
 pm_min_spare_servers=2
 pm_max_spare_servers=4
-pm_max_requests=400
+pm_max_requests=700
 sed -i 's/pm.max_children =.*/pm.max_children ='${pm_max_children}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.start_servers =.*/pm.start_servers ='${pm_start_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.min_spare_servers =.*/pm.min_spare_servers ='${pm_min_spare_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.max_spare_servers =.*/pm.max_spare_servers ='${pm_max_spare_servers}'/' "/usr/local/etc/php-fpm.d/www.conf" 
 sed -i 's/pm.max_requests =.*/pm.max_requests ='${pm_max_requests}'/' "/usr/local/etc/php-fpm.d/www.conf" 
+sed -i 's/pm = dynamic/pm = static/' "/usr/local/etc/php-fpm.d/www.conf" 
+
 
 # Modify php-fpm.conf:
 sed -i 's/;emergency_restart_threshold = .*/emergency_restart_threshold = 10/' "/usr/local/etc/php-fpm.conf" 
